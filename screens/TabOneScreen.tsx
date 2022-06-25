@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { Button, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -6,10 +7,15 @@ import { RootTabScreenProps } from '../types';
 
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+  const  [counter, setCounter] = useState(0);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
+      <Button title="Incr" onPress={()=>{setCounter(counter+1); console.log("incr")}} />
+      <Button title="Decr" onPress={()=>{setCounter(counter-1); console.log("decr")}} />
+      <Text style={styles.title}>{counter}</Text>
+
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
     </View>
